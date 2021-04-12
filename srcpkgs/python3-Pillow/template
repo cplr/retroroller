@@ -1,6 +1,6 @@
 # Template file for 'python3-Pillow'
 pkgname=python3-Pillow
-version=8.1.1
+version=8.2.0
 revision=1
 wrksrc="Pillow-${version}"
 build_style=python3-module
@@ -15,7 +15,7 @@ license="custom:PIL"
 homepage="https://python-pillow.org"
 changelog="https://raw.githubusercontent.com/python-pillow/Pillow/master/CHANGES.rst"
 distfiles="${PYPI_SITE}/P/Pillow/Pillow-${version}.tar.gz"
-checksum=f6fc18f9c9c7959bf58e6faf801d14fafb6d4717faaf6f79a68c8bb2a13dcf20
+checksum=a787ab10d7bb5494e5f76536ac460741788f1fbce851068d73a87ca7c35fc3e1
 
 do_check() {
 	PYTHONPATH=$(cd build/lib.linux-* && pwd) python3 -m pytest

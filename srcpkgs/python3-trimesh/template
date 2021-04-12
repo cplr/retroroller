@@ -1,6 +1,6 @@
 # Template file for 'python3-trimesh'
 pkgname=python3-trimesh
-version=3.9.8
+version=3.9.10
 revision=1
 wrksrc="trimesh-${version}"
 build_style=python3-module
@@ -17,7 +17,7 @@ maintainer="Karl Nilsson <karl.robert.nilsson@gmail.com>"
 license="MIT"
 homepage="https://trimsh.org/"
 distfiles="https://github.com/mikedh/trimesh/archive/${version}.tar.gz"
-checksum=81fda3b95da8cc440fd646c89874a69a79dd60cde652d7f66d53014e32e34f97
+checksum=ca1aeb6fb5eb1e6bf4793fe7b9dbfaee30e7e1506f57ead6f0f1db156c64d735
 
 post_install() {
 	vlicense LICENSE.md

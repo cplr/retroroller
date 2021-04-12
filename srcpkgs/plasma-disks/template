@@ -1,6 +1,6 @@
 # Template file for 'plasma-disks'
 pkgname=plasma-disks
-version=5.21.1
+version=5.21.4
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
@@ -13,4 +13,4 @@ maintainer="John <me@johnnynator.dev>"
 license="GPL-2.0-or-later"
 homepage="https://invent.kde.org/plasma/plasma-disks"
 distfiles="${KDE_SITE}/plasma/${version}/${pkgname}-${version}.tar.xz"
-checksum=d48a58311f876ea2e5760479c745c74a5bc68ad2b62f991120a52f4cb930c65f
+checksum=af186ba88170fe832f218a1438d142ed2ee6aff9ec967fe9003c6c84008451c2

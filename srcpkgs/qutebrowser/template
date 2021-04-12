@@ -1,18 +1,18 @@
 # Template file for 'qutebrowser'
 pkgname=qutebrowser
-version=2.0.2
+version=2.1.1
 revision=1
 build_style=python3-module
 hostmakedepends="python3-setuptools asciidoc"
 depends="python3-PyQt5-quick python3-Jinja2 python3-yaml
  python3-PyQt5-opengl python3-PyQt5-sql qt5-plugin-sqlite"
 short_desc="Keyboard-focused browser with a minimal GUI"
-maintainer="Érico Nogueira <ericonr@disroot.org>"
+maintainer="FollieHiyuki <folliekazetani@protonmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://qutebrowser.org/"
 changelog="https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/doc/changelog.asciidoc"
 distfiles="https://github.com/qutebrowser/qutebrowser/releases/download/v${version}/qutebrowser-${version}.tar.gz"
-checksum=48a87e453b8932e259b7b3cabd8bc500606852f622d123388fb34e4ffe57b33b
+checksum=b71b00ad7d498911978e5bbd153a6dd0450ac6ade3e5bf398fc96e15328342ce
 nostrip=yes
 
 build_options="webengine"

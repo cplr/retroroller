@@ -1,7 +1,7 @@
 # Template file for 'openssl'
 pkgname=openssl
-version=1.1.1j
-revision=2
+version=1.1.1k
+revision=1
 bootstrap=yes
 build_style=configure
 configure_script="./Configure"
@@ -14,10 +14,10 @@ make_check_target=test
 make_install_args="MANSUFFIX=ssl"
 short_desc="Toolkit for Secure Sockets Layer and Transport Layer Security"
 maintainer="John <johnz@posteo.net>"
-license="OpenSSL-License"
+license="OpenSSL"
 homepage="https://www.openssl.org"
 distfiles="https://www.openssl.org/source/openssl-${version}.tar.gz"
-checksum=aaf2fcb575cdf6491b98ab4829abf78a3dec8402b8b81efc8f23c00d443981bf
+checksum=892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5
 conf_files="/etc/ssl/openssl.cnf"
 replaces="libressl>=0"
 
@@ -26,6 +26,9 @@ build_options=asm
 if [ "$CHROOT_READY" ]; then
 	hostmakedepends="perl"
 	build_options_default="asm"
+else
+	# openssl-c_rehash depends on perl, ignore on bootstrap
+	subpackages="libcrypto1.1 libssl1.1 openssl-devel"
 fi
 
 case $XBPS_TARGET_MACHINE in
@@ -34,6 +37,7 @@ case $XBPS_TARGET_MACHINE in
 	aarch64*) configure_args+=" linux-aarch64";;
 	ppc64le*) configure_args+=" linux-ppc64le";;
 	ppc64*) configure_args+=" linux-ppc64";;
+	ppcle*) configure_args+=" linux-ppcle";;
 	ppc*) configure_args+=" linux-ppc";;
 	arm*) configure_args+=" linux-armv4";;
 	mips*) configure_args+=" linux-mips32 -mips32";;
@@ -46,6 +50,12 @@ pre_configure() {
 
 pre_build() {
 	make ${makejobs} depend
+}
+
+post_install() {
+	if [ ! "$CHROOT_READY" ]; then
+		rm -f "${DESTDIR}/usr/bin/c_rehash"
+	fi
 }
 
 libcrypto1.1_package() {

@@ -1,6 +1,6 @@
 # Template file for 'intellij-idea-community-edition'
 pkgname=intellij-idea-community-edition
-version=2020.3.2
+version=2021.1
 revision=1
 archs="i686 x86_64"
 depends="virtual?java-environment giflib libXtst hicolor-icon-theme"
@@ -9,7 +9,7 @@ maintainer="John <me@johnnynator.dev>"
 license="Apache-2.0"
 homepage="https://www.jetbrains.org/"
 distfiles="https://download.jetbrains.com/idea/ideaIC-${version}-no-jbr.tar.gz"
-checksum=6ee7cc7aa368d6ebec14b6536827cbb3dca5506245db3d2fa2a18f2ab9d6e3c0
+checksum=becd31e78d430db7a3edf381343f6722926e6e16b35d39371b74786decc40617
 repository=nonfree
 nopie=yes
 python_version=3

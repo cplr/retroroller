@@ -1,6 +1,6 @@
 # Template file for 'python3-grpcio-tools'
 pkgname=python3-grpcio-tools
-version=1.36.0
+version=1.37.0
 revision=1
 wrksrc="${pkgname#*-}-${version}"
 build_style=python3-module
@@ -12,7 +12,7 @@ maintainer="Andrew J. Hesford <ajh@sideband.org>"
 license="Apache-2.0"
 homepage="https://grpc.io"
 distfiles="${PYPI_SITE}/g/grpcio-tools/grpcio-tools-${version}.tar.gz"
-checksum=7f15ca23d3371134dbba784cc29c4115e7e61e5dc8e9b4eb02f2b152ec43adf6
+checksum=3ec510c1b6bfc32effc639acf9a055e72dab7a7b6757bf72f2132790d6a7cf1c
 
 if [ "$XBPS_TARGET_NO_ATOMIC8" ]; then
 	makedepends+=" libatomic-devel"

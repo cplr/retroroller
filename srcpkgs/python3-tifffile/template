@@ -1,19 +1,20 @@
 # Template file for 'python3-tifffile'
 pkgname=python3-tifffile
-version=2021.2.26
+version=2021.3.31
 revision=1
 wrksrc="${pkgname#python3-}-${version}"
 build_style=python3-module
 hostmakedepends="python3-setuptools"
 depends="python3-numpy"
-checkdepends="${depends} python3-pytest python3-lxml"
 short_desc="Read and write TIFF files"
 maintainer="Andrew J. Hesford <ajh@sideband.org>"
 license="BSD-3-Clause"
 homepage="https://github.com/cgohlke/tifffile"
 changelog="https://raw.githubusercontent.com/cgohlke/tifffile/master/CHANGES.rst"
 distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=a68e523f92ebaaa8e5503a9c2e165837e1d5faecc0379ecafc7881122f4fda1f
+checksum=82ce2f4f4d49415e95ae03f839f84eae4018435051106a1223e8b85d1a27b6f4
+# Tests require unpackaged fsspec
+make_check=no
 
 post_install() {
 	vlicense LICENSE

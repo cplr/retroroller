@@ -1,6 +1,6 @@
 # Template file for 'evtx'
 pkgname=evtx
-version=0.6.9
+version=0.7.2
 revision=1
 build_style=cargo
 short_desc="Parser for the Windows XML Event Log (EVTX) format"
@@ -8,4 +8,4 @@ maintainer="Andrew Benson <abenson+void@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/omerbenamram/evtx"
 distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=7ebbac7d442adbfdf00783f243b0746067a3d9f1c8f8dbd261b34bd85f3a4af4
+checksum=31967e3b175a7e0ad4a5d786418066bde66d5ddd4d48626312f59f5081c61ca6

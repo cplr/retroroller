@@ -76,17 +76,19 @@ packages for XBPS, the `Void Linux` native packaging system.
 <a id="Introduction"></a>
 ## Introduction
 
-The `void-packages` repository contains all `source` packages that are the
-recipes to download, compile and build binary packages for `Void`.
-Those `source` package files are called `templates`.
+The `void-packages` repository contains all the
+recipes to download, compile and build binary packages for Void Linux.
+These `source` package files are called `templates`.
 
-The `template files` are `GNU bash` shell scripts that must define some required/optional
-`variables` and `functions` that are processed by `xbps-src` (the package builder)
-to generate the resulting binary packages.
+The `template` files are shell scripts that define `variables` and `functions`
+to be processed by `xbps-src`, the package builder, to generate binary packages.
+The shell used by `xbps-src` is GNU bash; `xbps-src` doesn't aim to be
+compatible with POSIX `sh`.
 
-By convention, all templates start with a comment briefly explaining what they
-are. In addition, pkgname and version can't have any characters in them that
-would require them to be quoted, so they are not quoted.
+By convention, all templates start with a comment saying that it is a
+`template file` for a certain package. Most of the lines should be kept under 80
+columns; variables that list many values can be split into new lines, with the
+continuation in the next line indented by one space.
 
 A simple `template` example is as follows:
 
@@ -145,6 +147,11 @@ fonts).
 
 Browser forks, including those based on Chromium and Firefox, are generally not
 accepted. Such forks require heavy patching, maintenance and hours of build time.
+
+Software need to be used in version announced by authors as ready to use by
+the general public - usually called releases. Betas, arbitrary VCS revisions,
+templates using tip of development branch taken at build time and releases
+created by the package maintainer won't be accepted.
 
 <a id="buildphase"></a>
 ### Package build phases
@@ -442,10 +449,9 @@ Multiple licenses should be separated by commas, Example: `GPL-3.0-or-later, cus
   Note: `MIT`, `BSD`, `ISC` and custom licenses
   require the license file to be supplied with the binary package.
 
-- `maintainer` A string in the form of `name <user@domain>`.  The
-  email for this field must be a valid email that you can be reached
-  at.  Packages using `users.noreply.github.com` emails will not be
-  accepted.
+- `maintainer` A string in the form of `name <user@domain>`.  The email for this field
+must be a valid email that you can be reached at. Packages using
+`users.noreply.github.com` emails will not be accepted.
 
 - `pkgname` A string with the package name, matching `srcpkgs/<pkgname>`.
 
@@ -456,7 +462,12 @@ the generated `binary packages` have been modified.
 - `short_desc` A string with a brief description for this package. Max 72 chars.
 
 - `version` A string with the package version. Must not contain dashes or underscore
-and at least one digit is required. Shell's variable substition usage is not allowed.
+and at least one digit is required. Using bash's pattern substitution and prefix and
+suffix matching isn't supported, since this field needs to be parsed by
+`xbps-checkvers(1)`. Using variables in this field should be avoided.
+
+Neither `pkgname` or `version` should contain special characters which make it
+necessary to quote them, so they shouldn't be quoted in the template.
 
 <a id="optional_vars"></a>
 #### Optional variables
@@ -971,9 +982,9 @@ via `make_install_target`.
 via `configure_args`, the meson command can be overridden by `meson_cmd` and the location of
 the out of source build by `meson_builddir`
 
-- `void-cross` For cross-toolchain packages used to build Void systems. You will need to
-specify `cross_triplet` (corresponds to the target triplet specified in the cross profile
-for the target arch). Optionally, `cross_gcc_skip_go` can be specified. Individual subproject
+- `void-cross` For cross-toolchain packages used to build Void systems. There are no
+mandatory variables (target triplet is inferred), but you can specify some optional
+ones - `cross_gcc_skip_go` can be specified to skip `gccgo`, individual subproject
 configure arguments can be specified via `cross_*_configure_args` where `*` is `binutils`,
 `gcc_bootstrap` (early gcc), `gcc` (final gcc), `glibc` (or `musl`), `configure_args` is
 additionally passed to both early and final `gcc`. You can also specify custom `CFLAGS`

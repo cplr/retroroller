@@ -121,7 +121,7 @@ update_check() {
             *github.com*)
                 pkgurlname="$(printf %s "$url" | cut -d/ -f4,5)"
                 url="https://github.com/$pkgurlname/tags"
-                rx='/archive/(v?|\Q'"$pkgname"'\E-)?\K[\d\.]+(?=\.tar\.gz")';;
+                rx='/archive/refs/tags/(v?|\Q'"$pkgname"'\E-)?\K[\d\.]+(?=\.tar\.gz")';;
             *//gitlab.*)
                 pkgurlname="$(printf %s "$url" | cut -d/ -f1-5)"
                 url="$pkgurlname/tags"
@@ -130,9 +130,9 @@ update_check() {
                 pkgurlname="$(printf %s "$url" | cut -d/ -f4,5)"
                 url="https://bitbucket.org/$pkgurlname/downloads"
                 rx='/(get|downloads)/(v?|\Q'"$pkgname"'\E-)?\K[\d\.]+(?=\.tar)';;
-            *ftp.gnome.org*)
+            *ftp.gnome.org*|*download.gnome.org*)
                 : ${pattern="\Q$pkgname\E-\K(0|[13]\.[0-9]*[02468]|[4-9][0-9]+)\.[0-9.]*[0-9](?=)"}
-                url="http://ftp.gnome.org/pub/GNOME/sources/$pkgname/cache.json";;
+                url="https://download.gnome.org/sources/$pkgname/cache.json";;
             *kernel.org/pub/linux/kernel/*)
                 rx=linux-'\K'${version%.*}'[\d.]+(?=\.tar\.xz)';;
             *cran.r-project.org/src/contrib*)

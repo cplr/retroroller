@@ -1,17 +1,17 @@
 # Template file for 'geonkick'
 pkgname=geonkick
-version=2.7.0
+version=2.8.0
 revision=1
 build_style=cmake
-hostmakedepends="pkg-config tar xz redkite"
-makedepends="redkite-devel jack-devel libsndfile-devel rapidjson
+hostmakedepends="pkg-config tar xz"
+makedepends="jack-devel libsndfile-devel rapidjson
  lv2 libX11-devel cairo-devel"
 short_desc="Free software percussion synthesizer"
 maintainer="teldra <teldra@rotce.de>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/iurie-sw/geonkick"
 distfiles="https://github.com/iurie-sw/geonkick/archive/v${version}.tar.gz"
-checksum=c333da9f8db3eb71519a8920e8cc05525754c3a71f9c68ae16b55690d03fb9d4
+checksum=ec656e76df13ae1226bba6eeb8146c4f0ddbae2c34d28a89db473c16497eaff4
 make_check=extended # No target to "ninja test".
 
 if [[ ! ${XBPS_TARGET_MACHINE} == "x86_64" ]]; then

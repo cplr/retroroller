@@ -1,7 +1,7 @@
 # Template file for 'erlang'
 pkgname=erlang
-version=23.2.6
-revision=2
+version=23.3.1
+revision=1
 create_wrksrc=yes
 build_wrksrc="otp-OTP-${version}"
 build_style=gnu-configure
@@ -14,7 +14,7 @@ license="Apache-2.0"
 homepage="http://www.erlang.org/"
 changelog="https://github.com/erlang/otp/releases"
 distfiles="https://github.com/erlang/otp/archive/OTP-${version}.tar.gz"
-checksum=5bc6b31b36b949bf06e84d51986311fc1d2ace5e717aae3186dc057d4838445d
+checksum=a5a067a3b17bbef8511f2c056957925b666670b6f2cdaf645e1bc28ce3dd3517
 subpackages="erlang-doc"
 
 if [ -z "$CROSS_BUILD" ]; then
@@ -24,7 +24,7 @@ if [ -z "$CROSS_BUILD" ]; then
 fi
 
 case "$XBPS_TARGET_MACHINE" in
-	*-musl) configure_args+=" --disable-hipe" ;;
+	ppc64*|*-musl) configure_args+=" --disable-hipe" ;;
 esac
 
 pre_configure() {

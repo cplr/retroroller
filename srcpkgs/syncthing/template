@@ -1,12 +1,11 @@
 # Template file for 'syncthing'
 pkgname=syncthing
-version=1.13.1
+version=1.15.1
 revision=1
 build_style=go
 go_import_path="github.com/syncthing/syncthing"
 go_package="
  ${go_import_path}/cmd/stdiscosrv
- ${go_import_path}/cmd/stcli
  ${go_import_path}/cmd/strelaysrv
  ${go_import_path}/cmd/syncthing"
 go_build_tags="noupgrade"
@@ -18,7 +17,7 @@ license="MPL-2.0"
 homepage="http://syncthing.net/"
 changelog="https://github.com/syncthing/syncthing/releases"
 distfiles="https://github.com/syncthing/${pkgname}/archive/v${version}.tar.gz"
-checksum=f4632a062f75d01629e625ccef9625313f5d371c5f9bee744b0b811d47b92e25
+checksum=ad7276cec428f1b680a660179a29708a68d4214d58c73043453b5a164e316c92
 
 pre_build() {
 	GOARCH= go generate \
